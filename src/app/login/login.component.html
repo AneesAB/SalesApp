@@ -1,0 +1,49 @@
+<div class="container">
+    <div>
+        <h3>Login here..</h3>
+        <hr>
+
+        <!--Reactie form-->
+        <form [formGroup]="loginForm"
+        (ngSubmit)="loginCredentials()">
+
+            <!--UserName-->
+            <div>
+                <input type="text" placeholder="Enter User Name" formControlName="Username" autocomplete="off"
+                    required />
+            </div>
+            <div *ngIf="isSubmitted && formControls.Username.errors">
+                <div *ngIf="formContorls.Username.error.required" style="color: red; text-align: left">
+                    User name is reuqired
+                </div>
+
+            </div>
+            <br>
+            <!--userPassword-->
+            <div>
+                <input type="password" placeholder="Enter Password" formControlName="Password" autocomplete="off"
+                    required />
+            </div>
+            <div *ngIf="isSubmitted && formControls.Password.errors">
+                <div *ngIf="formContorls.Password.error.required" style="color: red; text-align: left">
+                    Password is reuqired
+                </div>
+            </div>
+            <br>
+            <div>
+                <button class="btn btn-md btn-outline-primary">
+                    <i class="fa fa-sign-in"></i>
+                    Login
+                </button>
+            </div>
+
+            <div *ngIf="error"
+            style="color: red; text-align: left;"
+            >{{error}}
+            </div>
+
+        </form>
+
+    </div>
+</div>
+
