@@ -1,0 +1,38 @@
+CREATE DATABASE SMS
+
+USE SMS
+
+CREATE TABLE Login(
+	l_id int primary key identity(1,1),
+	Username varchar(30),
+	Password varchar(30),
+	UserType varchar(30)
+)
+
+CREATE TABLE EmployeeRegistration(
+	emp_id int primary key identity(1,1),
+	FirstName varchar(40),
+	LastName varchar(40),
+	Age int,
+	Gender varchar(20),
+	Address varchar(40),
+	PhoneNuber int,
+	l_id int foreign key
+	references Login(l_id)
+)
+
+
+CREATE TABLE VisitTable(
+	visit_id int primary key identity(1,1),
+	cust_name varchar(100),
+	contact_person varchar(100),
+	contact_no int,
+	interest_product varchar(100),
+	visit_subject varchar(100),
+	description varchar(100),
+	visit_datetime DateTime,
+	is_disabled bit,
+	is_deleted bit,
+	emp_id int foreign key 
+	references EmployeeRegistration(emp_id)
+)
